@@ -44,15 +44,25 @@ void postorder(struct node* root){
     printf("%d ",root->data);
 
 }
+//Height bar korar Function, hehe !!
+int height(struct node* root){
+    if(root==0) return -1;
+    int lsh=height(root->left);
+    int rsh=height(root->right);
+    return (lsh>rsh?lsh:rsh)+1;
+}
 void main(){
   struct node *root;
   printf("Enter data: ");
   root=create(); 
-   printf("\nInorder: ");
+  printf("\nInorder: ");
     inorder(root);
-    printf("\nPreorder: ");
+  printf("\nPreorder: ");
     preorder(root);
-     printf("\nPostorder: ");
+  printf("\nPostorder: ");
     postorder(root);
+  printf("\nHeight: %d", height(root));
+  
+
 
 }
