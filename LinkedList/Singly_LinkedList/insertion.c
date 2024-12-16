@@ -46,7 +46,7 @@ int main(){
     struct node*temp=NULL;
     
     int n,data,choice,a;
-    printf("Nodes chai na Nudes??\n");
+    printf("Nodes chai na Nudes?? \n");
     printf("enter 1 for Nodes, enter 2 for Nudes: ");
     scanf("%d",&a);
     switch(a){
