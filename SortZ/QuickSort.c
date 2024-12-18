@@ -37,7 +37,7 @@ int partition(int arr[],int lb,int ub){
     return j;
 }
 void display(int arr[],int size){
-    for(int i=0;i<size;i++){  //cant write sizeof(arr) coz arr is passing here as address
+    for(int i=0;i<size;i++){  //can't write sizeof(arr) coz arr is passing here as address
         printf("%d ",arr[i]);
     }
 }
