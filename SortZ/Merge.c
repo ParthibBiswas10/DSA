@@ -1,33 +1,70 @@
-#include <stdio.h>
-
-void merge(int arr[], int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    int L[n1], R[n2];
-    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
-    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
-    int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) arr[k++] = L[i++];
-        else arr[k++] = R[j++];
+#include<stdio.h>
+void display(int arr[],int n);
+void MergeSort(int arr[],int lb,int ub);
+void merge(int arr[],int lb,int mid,int ub);
+int main(){
+    int n;
+    printf("Enter array size: ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter array elemets: \n");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
     }
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
-}
-
-void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
-}
-
-int main() {
-    int arr[] = {120, 110, 170, 15, 1477777, 714};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    mergeSort(arr, 0, n - 1);
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("Initial Array:\n");
+    display(arr,n);
+    MergeSort(arr,0,n-1);
+    printf("\nSorted Array:\n");
+   display(arr,n);
     return 0;
 }
+
+void display(int arr[],int n){
+    for(int i=0;i<n;i++){
+        printf("%d  ",arr[i]);
+    }
+}
+
+void MergeSort(int arr[],int lb,int ub){
+    if(ub>lb){
+        int mid=(lb+ub)/2;
+        MergeSort(arr,lb,mid);
+        MergeSort(arr,mid+1,ub);
+        merge(arr,lb,mid,ub);
+    }
+}
+void merge(int arr[], int lb, int mid, int ub){
+    int i=lb;
+    int j=mid+1;
+    int k=lb;
+    int b[100];
+
+    while(i<=mid && j<=ub){
+        if(arr[i]<arr[j]){
+            b[k]=arr[i];
+            i++;
+            k++;
+        }
+        else{
+            b[k]=arr[j];
+            j++;
+            k++;
+        }
+    }
+     while(j<=ub){
+            b[k]=arr[j];
+            j++;
+            k++;
+        }
+         while(i<=mid){
+            b[k]=arr[i];
+            i++;
+            k++;
+        }
+        for(int i=lb;i<=ub;i++){
+        arr[i]=b[i];
+    }
+    }
+   
+    
+
