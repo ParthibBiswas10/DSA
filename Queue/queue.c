@@ -11,6 +11,7 @@ void enq(int data){
         f=0;
         r++;
         queue[r]=data;
+        printf("r= %d\n",r);
 
     }
 }
@@ -26,9 +27,10 @@ void dq(){
 }
 
 void display(){
-    for(int i=f;i<r;i++){
+    for(int i=f;i<=r;i++){
         printf("%d ",queue[i]);
     }
+    printf("\n");
 }
 
 
