@@ -37,13 +37,15 @@ void display(){
 
 int main(){
     while(1){
+        int value;
+    printf("\n1.Enq  2.Dq  3.display  5.Exit\n");
     printf("Enter Choice: \n");
     int n;
     scanf("%d",&n);
     switch (n) {
             case 1: 
+                
                 printf("Enter value: ");
-                int value;
                 scanf("%d", &value);
                 enq(value); 
                 break;
