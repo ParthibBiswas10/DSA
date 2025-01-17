@@ -20,23 +20,28 @@ struct node* createnode(int value){
     newnode->next=NULL;
     return newnode;
 }
-struct node* insertbegin(struct node** head,int data){
+struct node* insertbegin(struct node* head,int data){
     struct node* newnode=createnode(data);
-    newnode->next=*head;
-    *head=newnode;
-    return *head;
+    newnode->next=head;
+    head=newnode;
+    return head;
 
 }
-struct node* insertend(struct node** head,int data,struct node** temp){
+struct node* insertend(struct node* head,int data){
     struct node* newnode=createnode(data);
-        if(*head==NULL){
-            *head=newnode;
-            *temp=*head;
+    struct node* temp;
+        if(head==NULL){
+            head=newnode;
+            
         }
         else{
-            (*temp)->next=newnode;
-            *temp=newnode;
+         temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
         }
+        temp->next = newnode;
+        }
+        return head;
         
 
 }
@@ -61,10 +66,10 @@ int main(){
         scanf("%d",&choice);
         switch(choice){
             case 1:
-                insertend(&head,data,&temp);
+                head= insertend(head,data);
                 break;
             case 2:
-                insertbegin(&head,data);
+                head= insertbegin(head,data);
                 break;
         }
        
