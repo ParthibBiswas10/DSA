@@ -62,13 +62,13 @@ int main() {
         printf("\nEnter choice: ");
         scanf("%d", &n);
         switch (n) {
-            case 1: {
+            case 1: 
                 printf("Enter value: ");
                 int value;
                 scanf("%d", &value);
                 push(value); 
                 break;
-            }
+            
             case 2:
                 pop(); 
                 break;
